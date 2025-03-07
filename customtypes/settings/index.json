@@ -1,0 +1,33 @@
+{
+  "format": "custom",
+  "id": "settings",
+  "label": "settings",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "meta_title": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "Write down meta title here..."
+        }
+      },
+      "meta_description": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "Write down meta description here..."
+        }
+      },
+      "meata_image": {
+        "type": "Image",
+        "config": {
+          "label": "Meata Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}
