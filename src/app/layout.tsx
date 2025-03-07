@@ -6,13 +6,13 @@ import { createClient } from "@/prismicio";
 
 
 
-export const manrope = Manrope({
+const manrope = Manrope({
   subsets: ['latin'],
   display: 'swap',
   variable: "--font-manrope",
 })
 
-export const inter = Inter({
+const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
@@ -24,15 +24,11 @@ export async function generateMetadata(): Promise<Metadata> {
   let description = "At The Return Journey, we're pioneering personalized travel planning with our groundbreaking AI-ML platform, giving you the control to craft unique itineraries";
   let image = "https://static-prod.thereturnjourney.com/states/Himachal.webp";
 
-  try {
-    const client = createClient();
-    const settingPage = await client.getSingle("settings");
-    title = settingPage.data.meta_title ?? title;
-    description = settingPage.data.meta_description ?? description;
-    image = settingPage.data.meata_image.url ?? image;
-  } catch (e) {
-    console.log('error', e)
-  }
+  const client = createClient();
+  const settingPage = await client.getSingle("settings");
+  title = settingPage.data.meta_title ?? title;
+  description = settingPage.data.meta_description ?? description;
+  image = settingPage.data.meata_image.url ?? image;
 
   return {
     title: title,
@@ -49,8 +45,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={clsx(manrope.variable, inter.variable)}>
-      <body>
+    <html lang="en">
+      <body className={clsx(manrope.variable, inter.variable)}>
         {children}
       </body>
     </html>
